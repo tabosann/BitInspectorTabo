@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BitInspectorTabo (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BitInspectorTabo (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
