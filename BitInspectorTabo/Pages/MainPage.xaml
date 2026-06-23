@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="BitInspectorTabo.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BitInspectorTabo.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="GridRoot" RowDefinitions="Auto,*" Loaded="GridRoot_Loaded">
+        <TitleBar
+            Height="48"
+            Title="BitInspectorTabo"
+            IsPaneToggleButtonVisible="True"
+            PaneToggleRequested="TitleBar_PaneToggleRequested"
+            />
+        <NavigationView
+            Grid.Row="1"
+            x:Name="NavigationViewMain"
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleButtonVisible="False"
+            PaneDisplayMode="LeftCompact"
+            SelectedItem="{x:Bind MPVM.NavigationViewMainSelectedItem, Mode=TwoWay}">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="Inspector" Icon="Home"/>
+            </NavigationView.MenuItems>
+            <Frame x:Name="FrameContent"/>
+        </NavigationView>
+    </Grid>
+</Page>

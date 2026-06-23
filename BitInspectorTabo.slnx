@@ -1,5 +1,11 @@
 <Solution>
   <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Debug_Unpackaged" />
+    <BuildType Name="Release" />
+    <BuildType Name="Release_AOT" />
+    <BuildType Name="Release_Unpackaged" />
+    <BuildType Name="Release_Unpackaged_AOT" />
     <Platform Name="ARM64" />
     <Platform Name="x64" />
     <Platform Name="x86" />
