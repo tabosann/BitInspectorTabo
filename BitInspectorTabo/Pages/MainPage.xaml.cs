@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -26,17 +27,24 @@ namespace BitInspectorTabo.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public MainPageViewModel MPVM { get; } = new();
+        public MainPageViewModel MPVM { get; } = App.AppParam.MPVM;
 
         public MainPage()
         {
             InitializeComponent();
+
+            // NOTE: 過去のアイテムを参照しっぱなしの場合は切り離す.
+            if (MPVM.SelectedMenu != null)
+            {
+                MPVM.SelectedMenu = null;
+            }
         }
 
         private void GridRoot_Loaded(object sender, RoutedEventArgs e)
         {
-            FrameContent.Navigate(typeof(ErrorPage));
+            // 画面をデフォルトの状態に切り替える.
             MPVM.FrameContent = FrameContent;
+            MPVM.SelectedMenu = DefaultSelect;
         }
 
         private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
@@ -54,8 +62,8 @@ namespace BitInspectorTabo.Pages
         public Frame? FrameContent { get; set; } = null;
 
         [ObservableProperty]
-        public partial object NavigationViewMainSelectedItem { get; set; }
-        partial void OnNavigationViewMainSelectedItemChanged(object value)
+        public partial object? SelectedMenu { get; set; }
+        partial void OnSelectedMenuChanged(object? value)
         {
             var item = value as NavigationViewItem;
             if(item == null || FrameContent == null)

@@ -6,18 +6,67 @@
     xmlns:local="using:BitInspectorTabo.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/DescriptionStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <Style
+            x:Key="SettingsSectionHeaderTextBlockStyle"
+            BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="Margin" Value="1,30,0,6" />
+        </Style>
+        <Style
+            x:Key="SettingsPageTitleTextBlockStyle"
+            BasedOn="{StaticResource TitleTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="MaxWidth" Value="1064"/>
+            <Setter Property="Margin" Value="36,24,36,0"/>
+            <Setter Property="AutomationProperties.HeadingLevel" Value="Level1"/>
+        </Style>
+        <Style
+            x:Key="SettingsPageStackPanelStyle"
+            TargetType="StackPanel">
+            <Setter Property="Spacing" Value="4"/>
+            <Setter Property="MaxWidth" Value="1064"/>
+        </Style>
     </Page.Resources>
 
-    <Grid>
-        <StackPanel Style="{StaticResource DescriptionStackPanelStyle}">
-            <TextBlock Style="{StaticResource DescriptionTitleTextBlockStyle}" Text="SettingsPage"/>
-        </StackPanel>
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock
+            Style="{StaticResource SettingsPageTitleTextBlockStyle}"
+            x:Name="PageHeader"
+            Text="Settings"/>
+        <ScrollView
+            Grid.Row="1"
+            Padding="36,0,36,0"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
+            <StackPanel Style="{StaticResource SettingsPageStackPanelStyle}">
+                <StackPanel.ChildrenTransitions>
+                    <RepositionThemeTransition />
+                </StackPanel.ChildrenTransitions>
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
+                <toolkit:SettingsCard Header="Theme" Description="Select which app theme to display">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xE790;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ComboBox SelectedIndex="{x:Bind SPVM.SelectedTheme, Mode=TwoWay}">
+                        <ComboBoxItem Content="System" Tag="System" />
+                        <ComboBoxItem Content="Light" Tag="Light" />
+                        <ComboBoxItem Content="Dark" Tag="Dark" />
+                    </ComboBox>
+                </toolkit:SettingsCard>
+                <toolkit:SettingsCard Header="Language">
+                    <toolkit:SettingsCard.HeaderIcon>
+                        <FontIcon Glyph="&#xED1E;" />
+                    </toolkit:SettingsCard.HeaderIcon>
+                    <ComboBox SelectedIndex="{x:Bind SPVM.SelectedLanguage, Mode=TwoWay}">
+                        <ComboBoxItem Content="System" Tag="System" />
+                        <ComboBoxItem Content="English" Tag="English" />
+                        <ComboBoxItem Content="Japanese" Tag="Japanese" />
+                    </ComboBox>
+                </toolkit:SettingsCard>
+            </StackPanel>
+        </ScrollView>
     </Grid>
 </Page>

@@ -21,9 +21,9 @@
             IsBackButtonVisible="Collapsed"
             IsPaneToggleButtonVisible="False"
             PaneDisplayMode="LeftCompact"
-            SelectedItem="{x:Bind MPVM.NavigationViewMainSelectedItem, Mode=TwoWay}">
+            SelectedItem="{x:Bind MPVM.SelectedMenu, Mode=TwoWay}">
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="Inspector" Icon="Home"/>
+                <NavigationViewItem x:Name="DefaultSelect" Tag="Inspector" Icon="Home"/>
             </NavigationView.MenuItems>
             <Frame x:Name="FrameContent"/>
         </NavigationView>

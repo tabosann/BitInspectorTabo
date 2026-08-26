@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using BitInspectorTabo.Pages;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -26,6 +27,7 @@ namespace BitInspectorTabo
     /// </summary>
     public partial class App : Application
     {
+        public static AppGlobalParam AppParam { get; } = new();
         private Window? _window;
 
         /// <summary>
@@ -46,5 +48,13 @@ namespace BitInspectorTabo
             _window = new MainWindow();
             _window.Activate();
         }
+    }
+
+    public class AppGlobalParam
+    {
+        public MainWindow? MainWindow { get; set; } = null;
+        public Grid? MainWindowGridRoot { get; set; } = null;
+        public MainPageViewModel MPVM { get; } = new();
+        public SettingsPageViewModel SPVM { get; } = new();
     }
 }

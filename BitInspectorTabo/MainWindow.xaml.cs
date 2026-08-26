@@ -14,6 +14,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using BitInspectorTabo.Pages;
+using Microsoft.UI;
+using Windows.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,6 +33,33 @@ namespace BitInspectorTabo
             ExtendsContentIntoTitleBar = true;
             AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
             FrameMain.Navigate(typeof(MainPage));
+
+            App.AppParam.MainWindow = this;
+            App.AppParam.MainWindowGridRoot = GridRoot;
+        }
+
+        public void RefreshContent()
+        {
+            FrameMain.Navigate(typeof(MainPage));
+        }
+
+        private void GridRoot_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            bool darkTheme = sender.ActualTheme == ElementTheme.Dark;
+            ApplyTheme(AppWindow, darkTheme);
+
+            void ApplyTheme(AppWindow appWindow, bool darkTheme)
+            {
+                if (AppWindow != null)
+                {
+                    var foregroundColor = darkTheme ? Colors.White : Colors.Black;
+                    appWindow.TitleBar.ButtonForegroundColor = foregroundColor;
+                    appWindow.TitleBar.ButtonHoverForegroundColor = foregroundColor;
+
+                    var backgroundHoverColor = darkTheme ? Color.FromArgb(24, 255, 255, 255) : Color.FromArgb(24, 0, 0, 0);
+                    appWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
+                }
+            }
         }
     }
 }
