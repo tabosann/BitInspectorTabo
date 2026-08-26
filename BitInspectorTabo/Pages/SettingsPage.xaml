@@ -35,7 +35,7 @@
         <TextBlock
             Style="{StaticResource SettingsPageTitleTextBlockStyle}"
             x:Name="PageHeader"
-            Text="Settings"/>
+            x:Uid="PageHeaderUid"/>
         <ScrollView
             Grid.Row="1"
             Padding="36,0,36,0"
@@ -45,25 +45,25 @@
                 <StackPanel.ChildrenTransitions>
                     <RepositionThemeTransition />
                 </StackPanel.ChildrenTransitions>
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
-                <toolkit:SettingsCard Header="Theme" Description="Select which app theme to display">
+                <TextBlock x:Uid="SettingsLabelUid" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+                <toolkit:SettingsCard x:Uid="ThemeHeaderUid">
                     <toolkit:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE790;" />
                     </toolkit:SettingsCard.HeaderIcon>
                     <ComboBox SelectedIndex="{x:Bind SPVM.SelectedTheme, Mode=TwoWay}">
-                        <ComboBoxItem Content="System" Tag="System" />
-                        <ComboBoxItem Content="Light" Tag="Light" />
-                        <ComboBoxItem Content="Dark" Tag="Dark" />
+                        <ComboBoxItem x:Uid="ComboBoxItemSystemUid" Tag="System" />
+                        <ComboBoxItem x:Uid="ComboBoxItemLightUid" Tag="Light" />
+                        <ComboBoxItem x:Uid="ComboBoxItemDarkUid" Tag="Dark" />
                     </ComboBox>
                 </toolkit:SettingsCard>
-                <toolkit:SettingsCard Header="Language">
+                <toolkit:SettingsCard x:Uid="LanguageHeaderUid">
                     <toolkit:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xED1E;" />
                     </toolkit:SettingsCard.HeaderIcon>
                     <ComboBox SelectedIndex="{x:Bind SPVM.SelectedLanguage, Mode=TwoWay}">
-                        <ComboBoxItem Content="System" Tag="System" />
-                        <ComboBoxItem Content="English" Tag="English" />
-                        <ComboBoxItem Content="Japanese" Tag="Japanese" />
+                        <ComboBoxItem x:Uid="ComboBoxItemSystemUid" Tag="System" />
+                        <ComboBoxItem x:Uid="ComboBoxItemEnglishUid" Tag="English" />
+                        <ComboBoxItem x:Uid="ComboBoxItemJapaneseUid" Tag="Japanese" />
                     </ComboBox>
                 </toolkit:SettingsCard>
             </StackPanel>

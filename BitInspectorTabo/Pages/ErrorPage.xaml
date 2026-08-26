@@ -17,12 +17,8 @@
 
     <Grid>
         <StackPanel Style="{StaticResource DescriptionStackPanelStyle}">
-            <TextBlock Style="{StaticResource DescriptionTitleTextBlockStyle}" Text="Error"/>
-            <TextBlock Style="{StaticResource DescriptionTextBlockStyle}">
-                This page is not supposed to be shown.
-                <LineBreak/>
-                Please let me know that.
-            </TextBlock>
+            <TextBlock x:Uid="ErrorTitleUid" Style="{StaticResource DescriptionTitleTextBlockStyle}" Text="Error"/>
+            <TextBlock x:Uid="ErrorDescUid" Style="{StaticResource DescriptionTextBlockStyle}"/>
         </StackPanel>
     </Grid>
 </Page>
