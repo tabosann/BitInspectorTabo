@@ -6,6 +6,7 @@
     xmlns:local="using:BitInspectorTabo.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:BitInspectorTabo.Controls"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -16,8 +17,11 @@
     </Page.Resources>
 
     <Grid>
-        <StackPanel Style="{StaticResource DescriptionStackPanelStyle}">
-            <TextBlock Style="{StaticResource DescriptionTitleTextBlockStyle}" Text="InspectorPage"/>
+        <StackPanel>
+            <controls:NumberBoxHex Text="{x:Bind IPVM.Hex, Mode=TwoWay}"/>
+            <controls:NumberBoxHex Text="{x:Bind IPVM.Bin, Mode=TwoWay}"/>
+            <NumberBox Value="{x:Bind IPVM.Float, Mode=TwoWay}"/>
+            <NumberBox Value="{x:Bind IPVM.Double, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>
 </Page>

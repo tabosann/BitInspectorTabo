@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -5,8 +6,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,9 +26,36 @@ namespace BitInspectorTabo.Pages
     /// </summary>
     public sealed partial class InspectorPage : Page
     {
+        public InspectorPageViewModel IPVM { get; } = App.AppParam.IPVM;
+
         public InspectorPage()
         {
             InitializeComponent();
         }
+    }
+
+    public partial class InspectorPageViewModel : ObservableObject
+    {
+        [ObservableProperty]
+        public partial string Hex { get; set; }
+        partial void OnHexChanged(string value)
+        {
+            Bin = value;
+
+            if (!UInt64.TryParse(value, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out UInt64 ul))
+            {
+                return;
+            }
+            var ui = (UInt32)(ul & 0xFFFFFFFF);
+
+            Float = BitConverter.UInt32BitsToSingle(ui);
+            Double = BitConverter.UInt64BitsToDouble(ul);
+        }
+        [ObservableProperty]
+        public partial string Bin { get; set; }
+        [ObservableProperty]
+        public partial float Float { get; set; }
+        [ObservableProperty]
+        public partial double Double { get; set; }
     }
 }

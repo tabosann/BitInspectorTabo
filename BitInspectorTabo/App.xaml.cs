@@ -55,6 +55,7 @@ namespace BitInspectorTabo
         public MainWindow? MainWindow { get; set; } = null;
         public Grid? MainWindowGridRoot { get; set; } = null;
         public MainPageViewModel MPVM { get; } = new();
+        public InspectorPageViewModel IPVM { get; } = new();
         public SettingsPageViewModel SPVM { get; } = new();
     }
 }
