@@ -48,14 +48,14 @@ namespace BitInspectorTabo.Pages
             }
             var ui = (UInt32)(ul & 0xFFFFFFFF);
 
-            Float = BitConverter.UInt32BitsToSingle(ui);
-            Double = BitConverter.UInt64BitsToDouble(ul);
+            Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+            Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
         }
         [ObservableProperty]
         public partial string Bin { get; set; }
         [ObservableProperty]
-        public partial float Float { get; set; }
+        public partial string Float { get; set; }
         [ObservableProperty]
-        public partial double Double { get; set; }
+        public partial string Double { get; set; }
     }
 }
