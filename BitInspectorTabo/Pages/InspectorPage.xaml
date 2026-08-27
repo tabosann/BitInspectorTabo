@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:BitInspectorTabo.Controls"
+    xmlns:behaviors="using:CommunityToolkit.WinUI.Behaviors"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -18,8 +20,26 @@
 
     <Grid>
         <StackPanel>
-            <TextBox Text="{x:Bind IPVM.Hex, Mode=TwoWay}"/>
-            <TextBox Text="{x:Bind IPVM.Bin, Mode=TwoWay}"/>
+            <TextBox x:Name="TextBoxHex" Text="{x:Bind IPVM.Hex, Mode=TwoWay}">
+                <interactivity:Interaction.Behaviors>
+                    <behaviors:KeyDownTriggerBehavior Key="Enter">
+                        <interactivity:InvokeCommandAction
+                            Command="{x:Bind IPVM.TextBoxHexEnterCommand}"
+                            CommandParameter="{x:Bind TextBoxHex.Text, Mode=TwoWay}"/>
+                    </behaviors:KeyDownTriggerBehavior>
+                    <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxHexBeforeTextChangingCommand}"/>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
+            <TextBox x:Name="TextBoxBin" Text="{x:Bind IPVM.Bin, Mode=TwoWay}">
+                <interactivity:Interaction.Behaviors>
+                    <behaviors:KeyDownTriggerBehavior Key="Enter">
+                        <interactivity:InvokeCommandAction
+                            Command="{x:Bind IPVM.TextBoxBinEnterCommand}"
+                            CommandParameter="{x:Bind TextBoxBin.Text, Mode=TwoWay}"/>
+                    </behaviors:KeyDownTriggerBehavior>
+                    <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxBinBeforeTextChangingCommand}"/>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
             <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay}"/>
             <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay}"/>
         </StackPanel>
