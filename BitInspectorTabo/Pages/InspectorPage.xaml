@@ -30,8 +30,16 @@
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxBinBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
-            <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <interactivity:Interaction.Behaviors>
+                    <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxFloatBeforeTextChangingCommand}"/>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
+            <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <interactivity:Interaction.Behaviors>
+                    <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxDoubleBeforeTextChangingCommand}"/>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
         </StackPanel>
     </Grid>
 </Page>

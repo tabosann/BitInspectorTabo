@@ -150,51 +150,17 @@ namespace BitInspectorTabo.Pages
             m_updatingDouble = false;
         }
 
-        public ICommand TextBoxHexEnterCommand { get; init; }
         public ICommand TextBoxHexBeforeTextChangingCommand { get; init; }
-        public ICommand TextBoxBinEnterCommand { get; init; }
         public ICommand TextBoxBinBeforeTextChangingCommand { get; init; }
+        public ICommand TextBoxFloatBeforeTextChangingCommand { get; init; }
+        public ICommand TextBoxDoubleBeforeTextChangingCommand { get; init; }
 
         public InspectorPageViewModel()
         {
-            TextBoxHexEnterCommand = new RelayCommand<string?>(TextBoxHexEnterAction);
             TextBoxHexBeforeTextChangingCommand = new RelayCommand<TextBoxBeforeTextChangingEventArgs>(TextBoxHexBeforeTextChangingAction);
-
-            TextBoxBinEnterCommand = new RelayCommand<string?>(TextBoxBinEnterAction);
             TextBoxBinBeforeTextChangingCommand = new RelayCommand<TextBoxBeforeTextChangingEventArgs>(TextBoxBinBeforeTextChangingAction);
-        }
-
-        void TextBoxHexEnterAction(string? text)
-        {
-            if (text == null)
-            {
-                return;
-            }
-
-            text = text.Trim();
-
-            if (text.Length > STR_LEN_HEX64) {
-                // オーバーフローなので下位64bitを切り抜く.
-                text = text.Substring(text.Length - STR_LEN_HEX64);
-            }
-
-            var len = text.Length;
-            if (len > STR_LEN_HEX32) {
-                len = STR_LEN_HEX64;
-            }
-            else if (len > STR_LEN_HEX16) {
-                len = STR_LEN_HEX32;
-            }
-            else if (len > STR_LEN_HEX8) {
-                len = STR_LEN_HEX16;
-            }
-            else {
-                len = STR_LEN_HEX8;
-            }
-
-            // 変更前後が同じ値でも変更通知が出されるようにする.
-            Hex = string.Empty;
-            Hex = text.PadLeft(len, '0');
+            TextBoxFloatBeforeTextChangingCommand = new RelayCommand<TextBoxBeforeTextChangingEventArgs>(TextBoxFloatBeforeTextChangingAction);
+            TextBoxDoubleBeforeTextChangingCommand = new RelayCommand<TextBoxBeforeTextChangingEventArgs>(TextBoxDoubleBeforeTextChangingAction);
         }
 
         void TextBoxHexBeforeTextChangingAction(TextBoxBeforeTextChangingEventArgs? e)
@@ -223,39 +189,6 @@ namespace BitInspectorTabo.Pages
                     return;
                 }
             }
-        }
-
-        void TextBoxBinEnterAction(string? text)
-        {
-            if (text == null)
-            {
-                return;
-            }
-
-            text = text.Trim();
-
-            if (text.Length > STR_LEN_BIN64) {
-                // オーバーフローなので下位64bitを切り抜く.
-                text = text.Substring(text.Length - STR_LEN_BIN64);
-            }
-
-            var len = text.Length;
-            if (len > STR_LEN_BIN32) {
-                len = STR_LEN_BIN64;
-            }
-            else if (len > STR_LEN_BIN16) {
-                len = STR_LEN_BIN32;
-            }
-            else if (len > STR_LEN_BIN8) {
-                len = STR_LEN_BIN16;
-            }
-            else {
-                len = STR_LEN_BIN8;
-            }
-
-            // 変更前後が同じ値でも変更通知が出されるようにする.
-            Bin = string.Empty;
-            Bin = text.PadLeft(len, '0');
         }
 
         void TextBoxBinBeforeTextChangingAction(TextBoxBeforeTextChangingEventArgs? e)
@@ -287,6 +220,101 @@ namespace BitInspectorTabo.Pages
                     return;
                 }
             }
+        }
+
+        void TextBoxFloatBeforeTextChangingAction(TextBoxBeforeTextChangingEventArgs? e)
+        {
+            if (e == null)
+            {
+                return;
+            }
+            if (!IsFloatText(e.NewText.Trim()))
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        void TextBoxDoubleBeforeTextChangingAction(TextBoxBeforeTextChangingEventArgs? e)
+        {
+            if (e == null)
+            {
+                return;
+            }
+            if (!IsFloatText(e.NewText.Trim()))
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        static bool IsFloatText(string text)
+        {
+            var numE = 0;
+            var numDot = 0;
+            var numMinus = 0;
+            var numPlus = 0;
+            foreach (char c in text)
+            {
+                if (IsNanOrInfChar(c))
+                {
+                    // 非数表記で使うのでスルー.
+                    // nan, infinity の表記を許可するため.
+                    continue;
+                }
+
+                if (c == '.')
+                {
+                    if (++numDot > 1)
+                    {
+                        // 小数点が２つもあるので許可しない.
+                        return false;
+                    }
+                }
+                else if (c == '-')
+                {
+                    if (++numMinus > 2)
+                    {
+                        // マイナス記号が３つもあるので許可しない.
+                        // マイナス記号は最大２つのはず. 例えば -2E-7
+                        return false;
+                    }
+                }
+                else if (c == '+')
+                {
+                    if (++numPlus > 2)
+                    {
+                        // プラス記号が３つもあるので許可しない.
+                        // 次の書き方は許可している. +2E+7
+                        return false;
+                    }
+                }
+                else if (c == 'e' || c == 'E')
+                {
+                    if (++numE > 1)
+                    {
+                        // 指数記号が２つもあるので許可しない.
+                        return false;
+                    }
+                }
+                else if (!IsNumberChar(c))
+                {
+                    return false;
+                }
+            }
+
+            bool IsNumberChar(char c)
+                => ('0' <= c && c <= '9');
+
+            bool IsNanOrInfChar(char c)
+                => (c == 'i' || c == 'I')
+                || (c == 'n' || c == 'N')
+                || (c == 'f' || c == 'F')
+                || (c == 't' || c == 'T')
+                || (c == 'y' || c == 'Y')
+                || (c == 'a' || c == 'A');
+
+            return true;
         }
 
         /// <summary>
