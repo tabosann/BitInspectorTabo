@@ -54,11 +54,13 @@ namespace BitInspectorTabo.Pages
 
             if (!m_updatingBin)
             {
-                Bin = ul.ToString($"B{ value.Length * 4 }");
+                Bin = ul.ToString($"B");
             }
             if (!m_updatingFloat)
             {
                 Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+                FloatHex = ui.ToString("X8");
+                FloatBin = ui.ToString("B32");
             }
             if (!m_updatingDouble)
             {
@@ -81,11 +83,13 @@ namespace BitInspectorTabo.Pages
 
             if (!m_updatingHex)
             {
-                Hex = ul.ToString($"X{ value.Length / 4 }");
+                Hex = ul.ToString("X");
             }
             if (!m_updatingFloat)
             {
                 Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+                FloatHex = ui.ToString("X8");
+                FloatBin = ui.ToString("B32");
             }
             if (!m_updatingDouble)
             {
@@ -107,13 +111,15 @@ namespace BitInspectorTabo.Pages
 
             m_updatingFloat = true;
 
+            FloatHex = ui.ToString("X8");
+            FloatBin = ui.ToString("B32");
             if (!m_updatingHex)
             {
-                Hex = ul.ToString("X8");
+                Hex = ul.ToString("X");
             }
             if (!m_updatingBin)
             {
-                Bin = ul.ToString("B32");
+                Bin = ul.ToString("B");
             }
             if (!m_updatingDouble)
             {
@@ -149,6 +155,12 @@ namespace BitInspectorTabo.Pages
             }
             m_updatingDouble = false;
         }
+
+        [ObservableProperty]
+        public partial string FloatHex { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial string FloatBin { get; set; } = string.Empty;
 
         public ICommand TextBoxHexBeforeTextChangingCommand { get; init; }
         public ICommand TextBoxBinBeforeTextChangingCommand { get; init; }

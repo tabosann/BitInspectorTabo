@@ -19,7 +19,7 @@
     </Page.Resources>
 
     <Grid>
-        <StackPanel>
+        <StackPanel Padding="36,24,36,0" Spacing="16">
             <TextBox x:Name="TextBoxHex" Text="{x:Bind IPVM.Hex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxHexBeforeTextChangingCommand}"/>
@@ -30,11 +30,21 @@
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxBinBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
-            <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                <interactivity:Interaction.Behaviors>
-                    <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxFloatBeforeTextChangingCommand}"/>
-                </interactivity:Interaction.Behaviors>
-            </TextBox>
+            <StackPanel Spacing="8">
+                <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <interactivity:Interaction.Behaviors>
+                        <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxFloatBeforeTextChangingCommand}"/>
+                    </interactivity:Interaction.Behaviors>
+                </TextBox>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock x:Uid="FloatHexUid" Width="50"/>
+                    <TextBlock Text="{x:Bind IPVM.FloatHex, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock x:Uid="FloatBinUid" Width="50"/>
+                    <TextBlock Text="{x:Bind IPVM.FloatBin, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                </StackPanel>
+            </StackPanel>
             <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxDoubleBeforeTextChangingCommand}"/>
