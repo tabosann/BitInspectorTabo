@@ -38,7 +38,7 @@
             x:Uid="PageHeaderUid"/>
         <ScrollView
             Grid.Row="1"
-            Padding="36,0,36,0"
+            Padding="36,0,36,24"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <StackPanel Style="{StaticResource SettingsPageStackPanelStyle}">
@@ -56,6 +56,24 @@
                         <ComboBoxItem x:Uid="ComboBoxItemDarkUid" Tag="Dark" />
                     </ComboBox>
                 </toolkit:SettingsCard>
+                <TextBlock x:Uid="AboutLabelUid" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+                <toolkit:SettingsExpander x:Uid="AboutCardUid" HeaderIcon="AllApps">
+                    <toolkit:SettingsExpander.Items>
+                        <toolkit:SettingsCard x:Uid="AboutVerCardUid">
+                            <toolkit:SettingsCard.HeaderIcon>
+                                <FontIcon Glyph="&#xE946;"/>
+                            </toolkit:SettingsCard.HeaderIcon>
+                            <TextBlock Text="v1.0.0"/>
+                        </toolkit:SettingsCard>
+                        <toolkit:SettingsCard x:Uid="AboutPrivacyPolicyCardUid">
+                            <toolkit:SettingsCard.HeaderIcon>
+                                <FontIcon Glyph="&#xE705;"/>
+                            </toolkit:SettingsCard.HeaderIcon>
+                            <TextBlock Text="privacy policy"/>
+                        </toolkit:SettingsCard>
+                    </toolkit:SettingsExpander.Items>
+                </toolkit:SettingsExpander>
+                <TextBlock x:Uid="DevLabelUid" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
                 <toolkit:SettingsCard x:Uid="LanguageHeaderUid">
                     <toolkit:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xED1E;" />

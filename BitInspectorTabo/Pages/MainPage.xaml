@@ -24,7 +24,6 @@
             SelectedItem="{x:Bind MPVM.SelectedMenu, Mode=TwoWay}">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="DefaultSelect" x:Uid="InspectorUid" Tag="Inspector" Icon="Zoom"/>
-                <NavigationViewItem x:Uid="HelpUid" Tag="Help" Icon="Help"/>
             </NavigationView.MenuItems>
             <Frame x:Name="FrameContent"/>
         </NavigationView>

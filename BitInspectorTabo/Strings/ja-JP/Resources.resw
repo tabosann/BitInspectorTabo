@@ -175,4 +175,19 @@ tabosannまで連絡をお願いいたします。</value>
   <data name="TextBoxDoubleUid.Header" xml:space="preserve">
     <value>Double</value>
   </data>
+  <data name="DevLabelUid.Text" xml:space="preserve">
+    <value>開発者設定</value>
+  </data>
+  <data name="AboutLabelUid.Text" xml:space="preserve">
+    <value>アプリについて</value>
+  </data>
+  <data name="AboutCardUid.Header" xml:space="preserve">
+    <value>BitInspectorTabo</value>
+  </data>
+  <data name="AboutVerCardUid.Header" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="AboutPrivacyPolicyCardUid.Header" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
 </root>

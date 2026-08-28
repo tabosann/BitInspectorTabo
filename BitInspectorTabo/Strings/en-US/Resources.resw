@@ -175,4 +175,19 @@ Please let me(tabosann) know that.</value>
   <data name="TextBoxDoubleUid.Header" xml:space="preserve">
     <value>Double</value>
   </data>
+  <data name="DevLabelUid.Text" xml:space="preserve">
+    <value>Developer Settings</value>
+  </data>
+  <data name="AboutLabelUid.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutCardUid.Header" xml:space="preserve">
+    <value>BitInspectorTabo</value>
+  </data>
+  <data name="AboutVerCardUid.Header" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="AboutPrivacyPolicyCardUid.Header" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
 </root>

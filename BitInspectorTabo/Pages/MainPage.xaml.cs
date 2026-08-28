@@ -76,9 +76,6 @@ namespace BitInspectorTabo.Pages
                 case "Inspector":
                     FrameContent.Navigate(typeof(InspectorPage));
                     break;
-                case "Help":
-                    FrameContent.Navigate(typeof(ErrorPage));
-                    break;
                 case "Settings":
                     FrameContent.Navigate(typeof(SettingsPage));
                     break;
