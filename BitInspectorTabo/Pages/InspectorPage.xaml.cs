@@ -50,9 +50,21 @@ namespace BitInspectorTabo.Pages
             }
             var ui = (UInt32)(ul & 0xFFFFFFFF);
 
-            Bin = ul.ToString($"B{ value.Length * 4 }");
-            Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
-            Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+            m_updatingHex = true;
+
+            if (!m_updatingBin)
+            {
+                Bin = ul.ToString($"B{ value.Length * 4 }");
+            }
+            if (!m_updatingFloat)
+            {
+                Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+            }
+            if (!m_updatingDouble)
+            {
+                Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+            }
+            m_updatingHex = false;
         }
 
         [ObservableProperty]
@@ -65,15 +77,78 @@ namespace BitInspectorTabo.Pages
             }
             var ui = (UInt32)(ul & 0xFFFFFFFF);
 
-            Hex = ul.ToString($"X{ value.Length / 4 }");
-            Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
-            Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+            m_updatingBin = true;
+
+            if (!m_updatingHex)
+            {
+                Hex = ul.ToString($"X{ value.Length / 4 }");
+            }
+            if (!m_updatingFloat)
+            {
+                Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+            }
+            if (!m_updatingDouble)
+            {
+                Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+            }
+            m_updatingBin = false;
         }
 
         [ObservableProperty]
         public partial string Float { get; set; } = string.Empty;
+        partial void OnFloatChanged(string value)
+        {
+            if (!float.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out float f))
+            {
+                return;
+            }
+            var ui = BitConverter.SingleToUInt32Bits(f);
+            var ul = (UInt64)ui;
+
+            m_updatingFloat = true;
+
+            if (!m_updatingHex)
+            {
+                Hex = ul.ToString("X8");
+            }
+            if (!m_updatingBin)
+            {
+                Bin = ul.ToString("B32");
+            }
+            if (!m_updatingDouble)
+            {
+                Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+            }
+            m_updatingFloat = false;
+        }
+
         [ObservableProperty]
         public partial string Double { get; set; } = string.Empty;
+        partial void OnDoubleChanged(string value)
+        {
+            if (!double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double d))
+            {
+                return;
+            }
+            var ul = BitConverter.DoubleToUInt64Bits(d);
+            var ui = (UInt32)(ul & 0xFFFFFFFF);
+
+            m_updatingDouble = true;
+
+            if (!m_updatingHex)
+            {
+                Hex = ul.ToString("X16");
+            }
+            if (!m_updatingBin)
+            {
+                Bin = ul.ToString("B64");
+            }
+            if (!m_updatingFloat)
+            {
+                Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+            }
+            m_updatingDouble = false;
+        }
 
         public ICommand TextBoxHexEnterCommand { get; init; }
         public ICommand TextBoxHexBeforeTextChangingCommand { get; init; }
@@ -135,6 +210,11 @@ namespace BitInspectorTabo.Pages
             if (text.StartsWith("0x", StringComparison.OrdinalIgnoreCase)) {
                 text = text.Substring(2);
             }
+            if (text.Length > STR_LEN_HEX64)
+            {
+                e.Cancel = true;
+                return;
+            }
 
             // 16進数以外の文字が含まれていたら拒否.
             foreach (char c in text) {
@@ -188,13 +268,21 @@ namespace BitInspectorTabo.Pages
             var text = e.NewText.Trim();
 
             // 0x プレフィックスを許可.
-            if (text.StartsWith("0b", StringComparison.OrdinalIgnoreCase)) {
+            if (text.StartsWith("0b", StringComparison.OrdinalIgnoreCase))
+            {
                 text = text.Substring(2);
+            }
+            if (text.Length > STR_LEN_BIN64)
+            {
+                e.Cancel = true;
+                return;
             }
 
             // 16進数以外の文字が含まれていたら拒否.
-            foreach (char c in text) {
-                if (!IsBinChar(c)) {
+            foreach (char c in text)
+            {
+                if (!IsBinChar(c))
+                {
                     e.Cancel = true;
                     return;
                 }
@@ -226,6 +314,11 @@ namespace BitInspectorTabo.Pages
         const int STR_LEN_BIN32 = 32;
         const int STR_LEN_BIN16 = 16;
         const int STR_LEN_BIN8 = 8;
+
+        bool m_updatingHex = false;
+        bool m_updatingBin = false;
+        bool m_updatingFloat = false;
+        bool m_updatingDouble = false;
     }
 
     /// <summary>

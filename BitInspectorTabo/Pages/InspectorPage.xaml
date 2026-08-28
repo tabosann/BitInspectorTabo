@@ -20,28 +20,18 @@
 
     <Grid>
         <StackPanel>
-            <TextBox x:Name="TextBoxHex" Text="{x:Bind IPVM.Hex, Mode=TwoWay}">
+            <TextBox x:Name="TextBoxHex" Text="{x:Bind IPVM.Hex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
-                    <behaviors:KeyDownTriggerBehavior Key="Enter">
-                        <interactivity:InvokeCommandAction
-                            Command="{x:Bind IPVM.TextBoxHexEnterCommand}"
-                            CommandParameter="{x:Bind TextBoxHex.Text, Mode=TwoWay}"/>
-                    </behaviors:KeyDownTriggerBehavior>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxHexBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
-            <TextBox x:Name="TextBoxBin" Text="{x:Bind IPVM.Bin, Mode=TwoWay}">
+            <TextBox x:Name="TextBoxBin" Text="{x:Bind IPVM.Bin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
-                    <behaviors:KeyDownTriggerBehavior Key="Enter">
-                        <interactivity:InvokeCommandAction
-                            Command="{x:Bind IPVM.TextBoxBinEnterCommand}"
-                            CommandParameter="{x:Bind TextBoxBin.Text, Mode=TwoWay}"/>
-                    </behaviors:KeyDownTriggerBehavior>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxBinBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
-            <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay}"/>
-            <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay}"/>
+            <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
     </Grid>
 </Page>
