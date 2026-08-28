@@ -161,6 +161,18 @@ Please let me(tabosann) know that.</value>
     <value>Hex</value>
   </data>
   <data name="BinLabelUid.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="TextBoxHexUid.Header" xml:space="preserve">
     <value>Hex</value>
+  </data>
+  <data name="TextBoxBinUid.Header" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="TextBoxFloatUid.Header" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="TextBoxDoubleUid.Header" xml:space="preserve">
+    <value>Double</value>
   </data>
 </root>

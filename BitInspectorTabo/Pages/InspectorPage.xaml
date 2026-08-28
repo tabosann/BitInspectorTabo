@@ -19,48 +19,48 @@
     </Page.Resources>
 
     <Grid>
-        <StackPanel Padding="36,24,36,0" Spacing="16">
-            <TextBox x:Name="TextBoxHex" Text="{x:Bind IPVM.Hex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <StackPanel Padding="36,24,36,0" Spacing="32">
+            <TextBox x:Uid="TextBoxHexUid" Text="{x:Bind IPVM.Hex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxHexBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
 
-            <TextBox x:Name="TextBoxBin" Text="{x:Bind IPVM.Bin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox x:Uid="TextBoxBinUid" Text="{x:Bind IPVM.Bin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <interactivity:Interaction.Behaviors>
                     <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxBinBeforeTextChangingCommand}"/>
                 </interactivity:Interaction.Behaviors>
             </TextBox>
 
             <StackPanel Spacing="8">
-                <TextBox Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox x:Uid="TextBoxFloatUid" Text="{x:Bind IPVM.Float, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <interactivity:Interaction.Behaviors>
                         <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxFloatBeforeTextChangingCommand}"/>
                     </interactivity:Interaction.Behaviors>
                 </TextBox>
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                    <TextBlock x:Uid="HexLabelUid" Width="50"/>
-                    <TextBlock Text="{x:Bind IPVM.FloatHex, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                    <TextBlock x:Uid="HexLabelUid" Width="50" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
+                    <TextBlock Text="{x:Bind IPVM.FloatHex, Mode=OneWay}" IsTextSelectionEnabled="True" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                    <TextBlock x:Uid="BinLabelUid" Width="50"/>
-                    <TextBlock Text="{x:Bind IPVM.FloatBin, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                    <TextBlock x:Uid="BinLabelUid" Width="50" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
+                    <TextBlock Text="{x:Bind IPVM.FloatBin, Mode=OneWay}" IsTextSelectionEnabled="True" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Spacing="8">
-                <TextBox Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox x:Uid="TextBoxDoubleUid" Text="{x:Bind IPVM.Double, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <interactivity:Interaction.Behaviors>
                         <local:BeforeTextChangingEventBehavior Command="{x:Bind IPVM.TextBoxDoubleBeforeTextChangingCommand}"/>
                     </interactivity:Interaction.Behaviors>
                 </TextBox>
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                    <TextBlock x:Uid="HexLabelUid" Width="50"/>
-                    <TextBlock Text="{x:Bind IPVM.DoubleHex, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                    <TextBlock x:Uid="HexLabelUid" Width="50" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
+                    <TextBlock Text="{x:Bind IPVM.DoubleHex, Mode=OneWay}" IsTextSelectionEnabled="True" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                    <TextBlock x:Uid="BinLabelUid" Width="50"/>
-                    <TextBlock Text="{x:Bind IPVM.DoubleBin, Mode=OneWay}" IsTextSelectionEnabled="True"/>
+                    <TextBlock x:Uid="BinLabelUid" Width="50" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
+                    <TextBlock Text="{x:Bind IPVM.DoubleBin, Mode=OneWay}" IsTextSelectionEnabled="True" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

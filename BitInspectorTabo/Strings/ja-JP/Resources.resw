@@ -163,4 +163,16 @@ tabosannまで連絡をお願いいたします。</value>
   <data name="BinLabelUid.Text" xml:space="preserve">
     <value>2進数</value>
   </data>
+  <data name="TextBoxHexUid.Header" xml:space="preserve">
+    <value>16進数</value>
+  </data>
+  <data name="TextBoxBinUid.Header" xml:space="preserve">
+    <value>2進数</value>
+  </data>
+  <data name="TextBoxFloatUid.Header" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="TextBoxDoubleUid.Header" xml:space="preserve">
+    <value>Double</value>
+  </data>
 </root>
