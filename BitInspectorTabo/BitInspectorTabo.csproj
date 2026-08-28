@@ -51,6 +51,7 @@
 
   <ItemGroup>
     <None Remove="Pages\ErrorPage.xaml" />
+    <None Remove="Pages\HelpPage.xaml" />
     <None Remove="Pages\InspectorPage.xaml" />
     <None Remove="Pages\MainPage.xaml" />
     <None Remove="Pages\SettingsPage.xaml" />
@@ -86,6 +87,11 @@
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" Version="8.2.251219" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2705" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\HelpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\SettingsPage.xaml">

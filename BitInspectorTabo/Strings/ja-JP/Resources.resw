@@ -190,4 +190,13 @@ tabosannまで連絡をお願いいたします。</value>
   <data name="AboutPrivacyPolicyCardUid.Header" xml:space="preserve">
     <value>プライバシーポリシー</value>
   </data>
+  <data name="HelpTitleUid.Text" xml:space="preserve">
+    <value>使い方</value>
+  </data>
+  <data name="HelpDesc0Uid.Text" xml:space="preserve">
+    <value>- 入力値に応じて他の数値欄が更新されます。</value>
+  </data>
+  <data name="HelpDesc1Uid.Text" xml:space="preserve">
+    <value>- Float, Double のテキストボックスには、nan, infinity などの非数も入力できます。</value>
+  </data>
 </root>

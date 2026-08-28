@@ -190,4 +190,13 @@ Please let me(tabosann) know that.</value>
   <data name="AboutPrivacyPolicyCardUid.Header" xml:space="preserve">
     <value>Privacy policy</value>
   </data>
+  <data name="HelpTitleUid.Text" xml:space="preserve">
+    <value>How to use</value>
+  </data>
+  <data name="HelpDesc0Uid.Text" xml:space="preserve">
+    <value>- The other fields are updated according to your input.</value>
+  </data>
+  <data name="HelpDesc1Uid.Text" xml:space="preserve">
+    <value>- Float and double input fields accept non-numeric inputs, such as NaN and Infinity.</value>
+  </data>
 </root>
