@@ -157,10 +157,10 @@ tabosannまで連絡をお願いいたします。</value>
   <data name="HelpUid.Content" xml:space="preserve">
     <value>ヘルプ</value>
   </data>
-  <data name="FloatHexUid.Text" xml:space="preserve">
+  <data name="HexLabelUid.Text" xml:space="preserve">
     <value>16進数</value>
   </data>
-  <data name="FloatBinUid.Text" xml:space="preserve">
+  <data name="BinLabelUid.Text" xml:space="preserve">
     <value>2進数</value>
   </data>
 </root>

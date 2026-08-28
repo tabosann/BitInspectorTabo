@@ -54,7 +54,7 @@ namespace BitInspectorTabo.Pages
 
             if (!m_updatingBin)
             {
-                Bin = ul.ToString($"B");
+                Bin = ul.ToString("B");
             }
             if (!m_updatingFloat)
             {
@@ -65,6 +65,8 @@ namespace BitInspectorTabo.Pages
             if (!m_updatingDouble)
             {
                 Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+                DoubleHex = ul.ToString("X16");
+                DoubleBin = ul.ToString("B64");
             }
             m_updatingHex = false;
         }
@@ -94,6 +96,8 @@ namespace BitInspectorTabo.Pages
             if (!m_updatingDouble)
             {
                 Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+                DoubleHex = ul.ToString("X16");
+                DoubleBin = ul.ToString("B64");
             }
             m_updatingBin = false;
         }
@@ -124,6 +128,8 @@ namespace BitInspectorTabo.Pages
             if (!m_updatingDouble)
             {
                 Double = BitConverter.UInt64BitsToDouble(ul).ToString("R");
+                DoubleHex = ul.ToString("X16");
+                DoubleBin = ul.ToString("B64");
             }
             m_updatingFloat = false;
         }
@@ -141,26 +147,33 @@ namespace BitInspectorTabo.Pages
 
             m_updatingDouble = true;
 
+            DoubleHex = ul.ToString("X16");
+            DoubleBin = ul.ToString("B64");
             if (!m_updatingHex)
             {
-                Hex = ul.ToString("X16");
+                Hex = ul.ToString("X");
             }
             if (!m_updatingBin)
             {
-                Bin = ul.ToString("B64");
+                Bin = ul.ToString("B");
             }
             if (!m_updatingFloat)
             {
                 Float = BitConverter.UInt32BitsToSingle(ui).ToString("R");
+                FloatHex = ui.ToString("X8");
+                FloatBin = ui.ToString("B32");
             }
             m_updatingDouble = false;
         }
 
         [ObservableProperty]
         public partial string FloatHex { get; set; } = string.Empty;
-
         [ObservableProperty]
         public partial string FloatBin { get; set; } = string.Empty;
+        [ObservableProperty]
+        public partial string DoubleHex { get; set; } = string.Empty;
+        [ObservableProperty]
+        public partial string DoubleBin { get; set; } = string.Empty;
 
         public ICommand TextBoxHexBeforeTextChangingCommand { get; init; }
         public ICommand TextBoxBinBeforeTextChangingCommand { get; init; }

@@ -157,10 +157,10 @@ Please let me(tabosann) know that.</value>
   <data name="HelpUid.Content" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="FloatHexUid.Text" xml:space="preserve">
+  <data name="HexLabelUid.Text" xml:space="preserve">
     <value>Hex</value>
   </data>
-  <data name="FloatBinUid.Text" xml:space="preserve">
-    <value>Bin</value>
+  <data name="BinLabelUid.Text" xml:space="preserve">
+    <value>Hex</value>
   </data>
 </root>
