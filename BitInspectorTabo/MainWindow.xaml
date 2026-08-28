@@ -13,7 +13,10 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid x:Name="GridRoot" ActualThemeChanged="GridRoot_ActualThemeChanged">
+    <Grid
+        x:Name="GridRoot"
+        Loaded="GridRoot_Loaded"
+        ActualThemeChanged="GridRoot_ActualThemeChanged">
         <Frame x:Name="FrameMain"/>
     </Grid>
 </Window>

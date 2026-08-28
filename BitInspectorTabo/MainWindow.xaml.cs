@@ -16,6 +16,7 @@ using Windows.Foundation.Collections;
 using BitInspectorTabo.Pages;
 using Microsoft.UI;
 using Windows.UI;
+using BitInspectorTabo.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -60,6 +61,12 @@ namespace BitInspectorTabo
                     appWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
                 }
             }
+        }
+
+        private void GridRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowHelper.ResizeClinetWithDpiScale(this, 720, 550);
+            WindowHelper.LimitMinClientSize(this, 720, 550);
         }
     }
 }
