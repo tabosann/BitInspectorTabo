@@ -58,18 +58,10 @@
                 </toolkit:SettingsCard>
                 <TextBlock x:Uid="AboutLabelUid" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
                 <toolkit:SettingsExpander x:Uid="AboutCardUid" HeaderIcon="AllApps">
+                    <TextBlock Text="1.0.0.0"/>
                     <toolkit:SettingsExpander.Items>
-                        <toolkit:SettingsCard x:Uid="AboutVerCardUid">
-                            <toolkit:SettingsCard.HeaderIcon>
-                                <FontIcon Glyph="&#xE946;"/>
-                            </toolkit:SettingsCard.HeaderIcon>
-                            <TextBlock Text="v1.0.0"/>
-                        </toolkit:SettingsCard>
-                        <toolkit:SettingsCard x:Uid="AboutPrivacyPolicyCardUid">
-                            <toolkit:SettingsCard.HeaderIcon>
-                                <FontIcon Glyph="&#xE705;"/>
-                            </toolkit:SettingsCard.HeaderIcon>
-                            <TextBlock Text="privacy policy"/>
+                        <toolkit:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Vertical">
+                            <HyperlinkButton x:Uid="PrivacyPolicyUid" NavigateUri="https://github.com/tabosann/BitInspectorTabo/wiki/%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC"/>
                         </toolkit:SettingsCard>
                     </toolkit:SettingsExpander.Items>
                 </toolkit:SettingsExpander>

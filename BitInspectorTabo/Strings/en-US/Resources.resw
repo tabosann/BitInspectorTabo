@@ -187,7 +187,7 @@ Please let me(tabosann) know that.</value>
   <data name="AboutVerCardUid.Header" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="AboutPrivacyPolicyCardUid.Header" xml:space="preserve">
+  <data name="PrivacyPolicyUid.Content" xml:space="preserve">
     <value>Privacy policy</value>
   </data>
   <data name="HelpTitleUid.Text" xml:space="preserve">
