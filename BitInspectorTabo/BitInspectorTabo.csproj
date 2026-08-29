@@ -32,13 +32,15 @@
     <AppxBundleNameForOutput>$(MSBuildProjectName)</AppxBundleNameForOutput>
 	<AppInstallerUri>$(SolutionDir)bin\$(Configuration)\$(TargetFramework)</AppInstallerUri>
 	<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-	<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+	<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 	<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
 	<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
 	<GenerateTestArtifacts>True</GenerateTestArtifacts>
 	<AppxBundle>Always</AppxBundle>
 	<AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
 	<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+	<PackageCertificateThumbprint>b8663973a60f06fb6e2d3ec853a0bcb2fc1d163c</PackageCertificateThumbprint>
+	<AppxFilterOutUnusedLanguagesResourceFileMaps>False</AppxFilterOutUnusedLanguagesResourceFileMaps>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PublishAot)'=='true'">

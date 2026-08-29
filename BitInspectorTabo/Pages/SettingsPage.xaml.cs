@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.Globalization;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -72,7 +73,7 @@ namespace BitInspectorTabo.Pages
             switch(value)
             {
                 case 0: // System
-                    ApplicationLanguages.PrimaryLanguageOverride = string.Empty;
+                    ApplicationLanguages.PrimaryLanguageOverride = CultureInfo.CurrentCulture.Name;
                     break;
                 case 1: // English
                     ApplicationLanguages.PrimaryLanguageOverride = "en-US";
