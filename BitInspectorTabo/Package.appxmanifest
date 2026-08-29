@@ -9,14 +9,14 @@
   IgnorableNamespaces="uap rescap systemai">
 
   <Identity
-    Name="79a237c8-e64b-44e8-8bc7-641f5cd4717c"
-    Publisher="CN=tabosann"
+    Name="tabosann.BitInspectorTabo"
+    Publisher="CN=6A440BBA-DB61-4189-BED0-BE3B7B2355F0"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="79a237c8-e64b-44e8-8bc7-641f5cd4717c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>BitInspectorTabo</DisplayName>
+    <DisplayName>Bit Inspector Tabo</DisplayName>
     <PublisherDisplayName>tabosann</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

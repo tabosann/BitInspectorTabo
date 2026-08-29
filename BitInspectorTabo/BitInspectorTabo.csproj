@@ -31,12 +31,12 @@
   <PropertyGroup Condition="'$(Packaged)'=='true'">
     <AppxBundleNameForOutput>$(MSBuildProjectName)</AppxBundleNameForOutput>
 	<AppInstallerUri>$(SolutionDir)bin\$(Configuration)\$(TargetFramework)</AppInstallerUri>
-	<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
-	<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+	<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+	<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
 	<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-	<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-	<GenerateTestArtifacts>False</GenerateTestArtifacts>
-	<AppxBundle>Auto</AppxBundle>
+	<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+	<GenerateTestArtifacts>True</GenerateTestArtifacts>
+	<AppxBundle>Always</AppxBundle>
 	<AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
 	<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
