@@ -16,5 +16,5 @@ internal class MarkdownSectionPreCodeRendererOptions
     /// <summary>
     /// html attributes for Code element in markdig generic attributes format
     /// </summary>
-    public string? CodeTagAttributes;
+    public string? CodeTagAttributes = null;
 }
