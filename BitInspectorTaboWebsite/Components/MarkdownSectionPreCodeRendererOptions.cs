@@ -2,7 +2,7 @@
 // This file is licensed to you under the MIT License.
 // ------------------------------------------------------------------------
 
-namespace BitInspectorTaboWebsite;
+namespace BitInspectorTaboWebsite.Components;
 
 /// <summary>
 /// Options for MarkdownSectionPreCodeRenderer

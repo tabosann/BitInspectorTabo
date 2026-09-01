@@ -9,7 +9,7 @@ using Markdig.Renderers;
 using Markdig.Renderers.Html;
 using Markdig.Syntax;
 
-namespace BitInspectorTaboWebsite;
+namespace BitInspectorTaboWebsite.Components;
 
 /// <summary>
 /// Modified version of original markdig CodeBlockRenderer

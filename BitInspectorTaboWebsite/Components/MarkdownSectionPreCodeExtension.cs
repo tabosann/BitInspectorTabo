@@ -6,7 +6,7 @@ using Markdig.Renderers;
 using Markdig;
 using Markdig.Renderers.Html;
 
-namespace BitInspectorTaboWebsite;
+namespace BitInspectorTaboWebsite.Components;
 
 internal class MarkdownSectionPreCodeExtension : IMarkdownExtension
 {

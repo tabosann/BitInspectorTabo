@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace BitInspectorTaboWebsite;
+namespace BitInspectorTaboWebsite.Components;
 
 public partial class MarkdownSection : FluentComponentBase
 {
@@ -75,7 +75,7 @@ public partial class MarkdownSection : FluentComponentBase
         {
             // import code for highlighting code blocks
             _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
-                "./MarkdownSection.razor.js");
+                "./Components/MarkdownSection.razor.js");
         }
 
         if (firstRender || _markdownChanged)
