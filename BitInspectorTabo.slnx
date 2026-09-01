@@ -16,4 +16,10 @@
     <Platform Solution="*|x86" Project="x86" />
     <Deploy />
   </Project>
+  <Project Path="BitInspectorTaboWebsite/BitInspectorTaboWebsite.csproj" Id="bd0de0bb-c434-4cd7-9e95-10031e948a6f">
+    <BuildType Solution="Debug_Unpackaged|*" Project="Debug" />
+    <BuildType Solution="Release_AOT|*" Project="Release" />
+    <BuildType Solution="Release_Unpackaged_AOT|*" Project="Release" />
+    <BuildType Solution="Release_Unpackaged|*" Project="Release" />
+  </Project>
 </Solution>

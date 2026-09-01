@@ -3,9 +3,10 @@
     <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
     <nav class="sitenav" aria-labelledby="main-menu">
         <FluentNavMenu Id="main-menu" Width="250" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded" CustomToggle="true">
-             <FluentNavLink Href="" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
-             <FluentNavLink Href="counter" Icon="@(new Icons.Regular.Size20.NumberSymbolSquare())" IconColor="Color.Accent">Counter</FluentNavLink>
-             <FluentNavLink Href="weather" Icon="@(new Icons.Regular.Size20.WeatherPartlyCloudyDay())" IconColor="Color.Accent">Weather</FluentNavLink>
+             <FluentNavLink Href="" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">ホーム</FluentNavLink>
+             <FluentNavLink Href="download" Icon="@(new Icons.Regular.Size20.ArrowDownload())" IconColor="Color.Accent">ダウンロード</FluentNavLink>
+             <FluentNavLink Href="about" Icon="@(new Icons.Regular.Size20.Info())" IconColor="Color.Accent">アプリについて</FluentNavLink>
+             <FluentNavLink Href="privacypolicy" Icon="@(new Icons.Regular.Size20.ShieldKeyhole())" IconColor="Color.Accent">プライバシーポリシー</FluentNavLink>
         </FluentNavMenu>
     </nav>
 </div>
