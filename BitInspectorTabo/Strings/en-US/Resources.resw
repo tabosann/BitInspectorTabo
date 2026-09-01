@@ -182,7 +182,7 @@ Please let me(tabosann) know that.</value>
     <value>About</value>
   </data>
   <data name="AboutCardUid.Header" xml:space="preserve">
-    <value>BitInspectorTabo</value>
+    <value>Bit Inspector Tabo</value>
   </data>
   <data name="AboutVerCardUid.Header" xml:space="preserve">
     <value>Version</value>
@@ -198,5 +198,14 @@ Please let me(tabosann) know that.</value>
   </data>
   <data name="HelpDesc1Uid.Text" xml:space="preserve">
     <value>- Float and double input fields accept non-numeric inputs, such as NaN and Infinity.</value>
+  </data>
+  <data name="HomePageUid.Content" xml:space="preserve">
+    <value>Home page</value>
+  </data>
+  <data name="DownloadPageUid.Content" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="AboutPageUid.Content" xml:space="preserve">
+    <value>About</value>
   </data>
 </root>
