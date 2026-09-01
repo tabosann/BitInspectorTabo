@@ -1,18 +1,16 @@
-﻿@page "/download"
+﻿@namespace BitInspectorTaboWebsite.Components
+@page "/download"
 
 <PageTitle>Download</PageTitle>
 
-<h1>ダウンロード</h1>
+<MarkdownSection FromAsset="./docs/Download.md" OnContentConverted="RefreshTableOfContents" />
 
-<h2>Microsoft Store</h2>
-準備中...<br/>
-<br/>
+@code {
+    [CascadingParameter]
+    public EventCallback OnRefreshTableOfContents { get; set; }
 
-<h2>exe 配布</h2>
-Assets 一番上にある zip をダウンロード・展開してご使用ください。<br/>
-<a href="https://github.com/tabosann/BitInspectorTabo/releases/latest">https://github.com/tabosann/BitInspectorTabo/releases/latest</a><br/>
-<br/>
-
-<h2>リリースノート</h2>
-<a href="https://github.com/tabosann/BitInspectorTabo/releases">https://github.com/tabosann/BitInspectorTabo/releases</a><br/>
-<br/>
+    private async Task RefreshTableOfContents()
+    {
+        await OnRefreshTableOfContents.InvokeAsync();
+    }
+}
